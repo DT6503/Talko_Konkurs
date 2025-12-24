@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы о работе</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="testimonials.css">
+</head>
+<body>
+    <section class="testimonials-page">
+        <div class="testimonials-container">
+            <!-- Кнопка назад -->
+            <a href="index.html" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Назад на главную
+            </a>
+            
+            <!-- Форма добавления отзыва -->
+            <div class="testimonial-form">
+                <h2 class="form-title">Оставить отзыв</h2>
+                <form id="testimonialForm">
+                    <div class="form-group">
+                        <input type="text" id="authorName" class="form-input" required placeholder=" ">
+                        <label for="authorName" class="form-label">Ваше имя *</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="testimonialText" class="form-textarea form-input" required placeholder=" " rows="5"></textarea>
+                        <label for="testimonialText" class="form-label">Ваш отзыв *</label>
+                    </div>
+                    
+                    <div class="rating-container">
+                        <label class="rating-label">Оценка (необязательно)</label>
+                        <div class="rating-stars" id="ratingStars">
+                            <span class="star" data-rating="1">☆</span>
+                            <span class="star" data-rating="2">☆</span>
+                            <span class="star" data-rating="3">☆</span>
+                            <span class="star" data-rating="4">☆</span>
+                            <span class="star" data-rating="5">☆</span>
+                        </div>
+                        <input type="hidden" id="rating" value="0">
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span id="btnText">Опубликовать отзыв</span>
+                        <div id="btnLoader" style="display: none;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="spinner">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity="0.25"/>
+                                <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Список существующих отзывов -->
+            <div class="testimonials-list">
+                <h2 class="list-title">Отзывы клиентов</h2>
+                <div id="testimonialsContainer">
+                    <!-- Отзывы будут загружаться здесь -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Уведомление -->
+        <div id="notification" class="notification">
+            Отзыв успешно добавлен! ✨
+        </div>
+    </section>
+
+    <script src="testimonials.js"></script>
+</body>
+</html>

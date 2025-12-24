@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проект недоступен | DT65</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Дополнительные стили для этой страницы */
+        :root {
+            --black: #000000;
+            --black-light: #0a0a0a;
+            --white: #ffffff;
+            --gray: #888888;
+            --gray-dark: #333333;
+            --purple: #7e49fa;
+            --purple-hover: #7c3aed;
+            --yellow: #f59e0b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Контейнер */
+        .restricted-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        /* Заголовок */
+        .restricted-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--purple), var(--yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+        
+        /* Эмодзи */
+        .restricted-emoji {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            animation: floatEmoji 6s ease-in-out infinite;
+        }
+        
+        @keyframes floatEmoji {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(5deg); }
+            66% { transform: translateY(-8px) rotate(-3deg); }
+        }
+        
+        /* Сообщение */
+        .restricted-message {
+            font-size: 1.5rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+        
+        /* Особый акцент */
+        .restricted-highlight {
+            color: var(--yellow);
+            font-weight: 600;
+            display: inline-block;
+            padding: 0 4px;
+        }
+        
+        /* Детали */
+        .restricted-details {
+            background: var(--black-light);
+            border: 1px solid var(--gray-dark);
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 2rem auto;
+            text-align: left;
+        }
+        
+        .details-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .details-title::before {
+            content: "🔒";
+            font-size: 1.5rem;
+        }
+        
+        .details-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .details-list li {
+            padding: 0.5rem 0;
+            color: var(--gray);
+            border-bottom: 1px solid var(--gray-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .details-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .details-list li::before {
+            content: "•";
+            color: var(--purple);
+            font-size: 1.5rem;
+        }
+        
+        /* Кнопки - ИСПРАВЛЕНО: убраны скачки */
+        .restricted-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .restricted-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--purple);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background: var(--purple-hover);
+            /* УБРАНО: transform: translateY(-2px); */
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--gray-dark);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--purple);
+            color: var(--purple);
+            /* УБРАНО: transform: translateY(-2px); */
+        }
+        
+        /* Футер */
+        .restricted-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-dark);
+            color: var(--gray);
+            font-size: 0.9rem;
+            max-width: 600px;
+        }
+        
+        /* Декоративные элементы */
+        .pattern {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.05;
+        }
+        
+        .pattern-1 {
+            top: 10%;
+            left: 5%;
+            font-size: 15rem;
+            transform: rotate(-15deg);
+        }
+        
+        .pattern-2 {
+            bottom: 10%;
+            right: 5%;
+            font-size: 12rem;
+            transform: rotate(15deg);
+        }
+        
+        /* Адаптив для планшетов */
+        @media (max-width: 1024px) {
+            .restricted-title {
+                font-size: 3.5rem;
+            }
+            
+            .restricted-emoji {
+                font-size: 4rem;
+            }
+            
+            .restricted-message {
+                font-size: 1.3rem;
+                padding: 0 20px;
+            }
+            
+            .pattern {
+                opacity: 0.03;
+            }
+            
+            .pattern-1 {
+                font-size: 12rem;
+            }
+            
+            .pattern-2 {
+                font-size: 10rem;
+            }
+        }
+        
+        /* Адаптив для мобильных */
+        @media (max-width: 768px) {
+            .restricted-container {
+                padding: 40px 15px;
+            }
+            
+            .restricted-title {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .restricted-emoji {
+                font-size: 3rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .restricted-message {
+                font-size: 1.1rem;
+                padding: 0;
+                margin-bottom: 2rem;
+            }
+            
+            .restricted-details {
+                padding: 1.5rem;
+                margin: 1.5rem auto;
+            }
+            
+            .details-title {
+                font-size: 1.1rem;
+            }
+            
+            .details-list li {
+                font-size: 0.95rem;
+            }
+            
+            .restricted-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                margin-top: 2rem;
+            }
+            
+            .restricted-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 0.9rem 1.5rem;
+            }
+            
+            .pattern {
+                display: none;
+            }
+            
+            .restricted-footer {
+                margin-top: 3rem;
+                padding-top: 1.5rem;
+                font-size: 0.85rem;
+                text-align: center;
+            }
+        }
+        
+        /* Для очень маленьких экранов */
+        @media (max-width: 480px) {
+            .restricted-title {
+                font-size: 2rem;
+            }
+            
+            .restricted-emoji {
+                font-size: 2.5rem;
+            }
+            
+            .restricted-message {
+                font-size: 1rem;
+            }
+            
+            .restricted-details {
+                padding: 1.25rem;
+            }
+            
+            .details-title {
+                font-size: 1rem;
+            }
+            
+            .details-list li {
+                font-size: 0.9rem;
+                padding: 0.4rem 0;
+            }
+            
+            .restricted-buttons {
+                max-width: 280px;
+            }
+            
+            .restricted-btn {
+                padding: 0.8rem 1.25rem;
+                font-size: 0.95rem;
+            }
+        }
+        
+        /* Анимация появления */
+        .restricted-container {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="restricted-container">
+        <!-- Декоративные элементы -->
+        <div class="pattern pattern-1">⚙️</div>
+        <div class="pattern pattern-2">🔒</div>
+        
+        <!-- Эмодзи -->
+        <div class="restricted-emoji">🚫</div>
+        
+        <!-- Заголовок -->
+        <h1 class="restricted-title">Проект недоступен</h1>
+        
+        <!-- Основное сообщение -->
+        <div class="restricted-message">
+            Эта страница не доступна для вашего просмотра, 
+            так как этот проект уже получен заказчиком 
+            и является частью <span class="restricted-highlight">корпоративной тайны</span>.
+        </div>
+        
+        <!-- Детали -->
+        <div class="restricted-details">
+            <div class="details-title">Информация о защите проекта</div>
+            <ul class="details-list">
+                <li>Проект выполнен под NDA (соглашение о неразглашении)</li>
+                <li>Код и дизайн являются интеллектуальной собственностью клиента</li>
+                <li>Доступ ограничен в соответствии с договором</li>
+                <li>Конфиденциальная информация защищена</li>
+            </ul>
+        </div>
+        
+        <!-- Кнопки -->
+        <div class="restricted-buttons">
+            <a href="index.html" class="restricted-btn btn-primary">
+                <span>← Вернуться на главную</span>
+            </a>
+            <a href="#portfolio" class="restricted-btn btn-secondary">
+                <span>Посмотреть другие проекты</span>
+            </a>
+        </div>
+        
+        <!-- Футер -->
+        <div class="restricted-footer">
+            <p>© 2025 DT65 | Все права защищены. Конфиденциальная информация.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #666;">
+                Если вы заказчик и у вас возникли вопросы, свяжитесь со мной
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                if (href === '#portfolio') {
+                    window.location.href = 'index.html#portfolio';
+                }
+            });
+        });
+
+        // Анимация для эмодзи при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            const emoji = document.querySelector('.restricted-emoji');
+            emoji.style.opacity = '0';
+            emoji.style.transform = 'scale(0.8)';
+            
+            setTimeout(() => {
+                emoji.style.transition = 'all 0.5s ease';
+                emoji.style.opacity = '1';
+                emoji.style.transform = 'scale(1)';
+            }, 300);
+        });
+
+        // Адаптация для очень маленьких экранов
+        function checkScreenSize() {
+            const isVerySmall = window.innerWidth <= 320;
+            const title = document.querySelector('.restricted-title');
+            const message = document.querySelector('.restricted-message');
+            
+            if (isVerySmall && title && message) {
+                title.style.fontSize = '1.8rem';
+                message.style.fontSize = '0.95rem';
+            }
+        }
+        
+        // Проверяем при загрузке и изменении размера
+        window.addEventListener('load', checkScreenSize);
+        window.addEventListener('resize', checkScreenSize);
+    </script>
+</body>
+</html>
